@@ -30,7 +30,8 @@ jobs:
       - name: 🔍 Test backend (Java API)
         run: |
           echo "Testing backend..."
-          curl -f http://localhost:8081 || (echo "❌ Backend not responding on 8081" && exit 1)
+          curl -f curl -f http://localhost:8081/api/hello
+                  || (echo "❌ Backend not responding on 8081" && exit 1)
 
       - name: 🌐 Test frontend (Nginx)
         run: |
