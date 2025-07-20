@@ -30,13 +30,18 @@ jobs:
       - name: 🔍 Test backend (Java API)
         run: |
           echo "Testing backend..."
-          curl -f curl -f http://localhost:8081/api/hello
-                  || (echo "❌ Backend not responding on 8081" && exit 1)
-
+          if ! curl -f curl -f http://localhost:8081/api/hello; then
+            (echo "❌ Backend not responding on 8081" && exit 1)
+            exit 1
+          fi
+          
       - name: 🌐 Test frontend (Nginx)
         run: |
           echo "Testing frontend..."
-          curl -f http://localhost || (echo "❌ Frontend not responding on port 80" && exit 1)
+          if ! curl -f http://localhost; then
+            echo "❌ Frontend not responding on port 80"
+            exit 1
+          fi
 
       - name: 🧹 Tear down
         run: docker compose -f docker-compose.yml down
