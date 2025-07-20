@@ -20,3 +20,22 @@ jobs:
       - name: ⚙️ Build Docker Compose images
         run:  |
           docker compose -f docker-compose.yml build
+      
+      - name: 🧪 Start containers
+        run: docker compose -f docker-compose.yml up -d
+
+      - name: ⏳ Wait for services to start (Spring Boot & Nginx)
+        run: sleep 20
+
+      - name: 🔍 Test backend (Java API)
+        run: |
+          echo "Testing backend..."
+          curl -f http://localhost:8081 || (echo "❌ Backend not responding on 8081" && exit 1)
+
+      - name: 🌐 Test frontend (Nginx)
+        run: |
+          echo "Testing frontend..."
+          curl -f http://localhost || (echo "❌ Frontend not responding on port 80" && exit 1)
+
+      - name: 🧹 Tear down
+        run: docker compose -f docker-compose.yml down
