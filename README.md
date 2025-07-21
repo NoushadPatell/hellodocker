@@ -1,4 +1,4 @@
-## 🚀 Run  
+## 🚀 Runn  
 Prerequisite: **Docker**
 
 git clone https://github.com/NoushadPatell/hellodocker.git
