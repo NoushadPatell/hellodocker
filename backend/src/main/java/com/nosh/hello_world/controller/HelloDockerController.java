@@ -13,4 +13,9 @@ public class HelloDockerController {
     public String helloDocker() {
         return "Hello Docker, wassup !. Give my regards to vite reactjs.";
     }
+
+    @GetMapping("/testing_cd")
+    public String testingCd() {
+        return "Just testing CD(Continuous Deployment) pipeline using Github Actions !.";
+    }
 }
