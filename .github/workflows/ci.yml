@@ -30,7 +30,7 @@ jobs:
       - name: 🔍 Test backend (Java API)
         run: |
           echo "Testing backend..."
-          if ! curl -f curl -f http://localhost:8081/api/hello; then
+          if ! curl -f http://localhost:8081/api/hello; then
             (echo "❌ Backend not responding on 8081" && exit 1)
             exit 1
           fi
