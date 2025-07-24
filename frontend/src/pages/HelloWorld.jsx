@@ -9,7 +9,7 @@ const HelloWorldApp = () => {
     const fetchMessage = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:8081/api/hello');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/hello`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
